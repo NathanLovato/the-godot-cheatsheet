@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch5lte7o3t38n"]
+
+[ext_resource type="PackedScene" uid="uid://b1ot6gn6tms6h" path="res://feel_goods/character_dust_trail/third_person_controller.tscn" id="1_20nfc"]
+[ext_resource type="PackedScene" uid="uid://bosa48x4gwq0k" path="res://assets/background.tscn" id="2_fylp1"]
+
+[node name="DustTrailDemo" type="Node3D"]
+
+[node name="ThirdPersonController" parent="." instance=ExtResource("1_20nfc")]
+
+[node name="Background" parent="." instance=ExtResource("2_fylp1")]
