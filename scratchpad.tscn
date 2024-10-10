@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://h575d6u6a67u"]
+
+[ext_resource type="Script" path="res://fps_boosters/measure_performance.gd" id="1_fy46s"]
+
+[node name="Scratchpad" type="Node"]
+script = ExtResource("1_fy46s")
