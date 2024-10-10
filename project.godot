@@ -13,3 +13,7 @@ config_version=5
 config/name="The Godot Cheatsheet"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdquest_colorpicker_presets/plugin.cfg")
