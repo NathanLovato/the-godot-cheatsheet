@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://gra1a5ygb2fv"]
+
+[ext_resource type="Shader" path="res://assets/vfx/ice_spikes/materials/ice_spikes.gdshader" id="1_01tt8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_01tt8")
+shader_parameter/albedo = Color(0.652525, 0.837094, 0.999999, 1)
+shader_parameter/interior_albedo = Color(0.280634, 0.683704, 0.999998, 1)
+shader_parameter/rim_light_color = Color(1, 1, 1, 1)
+shader_parameter/rim_light_intensity = 1.5

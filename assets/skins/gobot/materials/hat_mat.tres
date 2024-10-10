@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dux0o32bwi83"]
+
+[ext_resource type="Shader" path="res://assets/skins/gobot/materials/witch_hat.gdshader" id="1_ui6n6"]
+[ext_resource type="Texture2D" uid="uid://cbihh31vrcasr" path="res://assets/skins/gobot/model/hat_mask.png" id="2_y6fid"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ui6n6")
+shader_parameter/star_color = Color(1, 0.733333, 0, 1)
+shader_parameter/hat_color = Color(0.6076, 0.3255, 0.93, 1)
+shader_parameter/band_color = Color(0.2, 0.113725, 0.301961, 1)
+shader_parameter/rim_light_color = Color(1, 0.662745, 0.219608, 0.501961)
+shader_parameter/rim_light_intensity = 1.0
+shader_parameter/mask_sampler = ExtResource("2_y6fid")

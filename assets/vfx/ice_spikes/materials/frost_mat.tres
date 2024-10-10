@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://doyn5fi2yuw30"]
+
+[ext_resource type="Shader" path="res://assets/vfx/ice_spikes/materials/frost.gdshader" id="1_aqnhn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8y65c"]
+noise_type = 2
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uicbb"]
+seamless = true
+noise = SubResource("FastNoiseLite_8y65c")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_aqnhn")
+shader_parameter/albedo_1 = Color(0.619816, 0.821108, 1, 1)
+shader_parameter/albedo_2 = Color(5.14036e-05, 0.615094, 0.97519, 1)
+shader_parameter/offset = 1.0
+shader_parameter/noise_sampler = SubResource("NoiseTexture2D_uicbb")

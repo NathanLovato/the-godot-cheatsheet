@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://v66b3d88pdb6"]
+
+[ext_resource type="PackedScene" uid="uid://rums2vr0qjma" path="res://feel_goods/player_wiggle/player_wiggle.tscn" id="1_xe4nq"]
+[ext_resource type="PackedScene" uid="uid://bosa48x4gwq0k" path="res://assets/background.tscn" id="2_883og"]
+
+[node name="WiggleCharacterDemo" type="Node3D"]
+
+[node name="Player3D" parent="." instance=ExtResource("1_xe4nq")]
+
+[node name="Background" parent="." instance=ExtResource("2_883og")]

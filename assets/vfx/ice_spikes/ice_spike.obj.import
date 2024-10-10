@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0tkngwxwsqc1"
+path="res://.godot/imported/ice_spike.obj-d69fc0d29612b91489e13774507a253b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/ice_spike.obj-d69fc0d29612b91489e13774507a253b.mesh"]
+
+source_file="res://assets/vfx/ice_spikes/ice_spike.obj"
+dest_files=["res://.godot/imported/ice_spike.obj-d69fc0d29612b91489e13774507a253b.mesh", "res://.godot/imported/ice_spike.obj-d69fc0d29612b91489e13774507a253b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

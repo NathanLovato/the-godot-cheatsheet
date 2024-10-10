@@ -1,0 +1,319 @@
+[gd_scene load_steps=25 format=3 uid="uid://s7nj1a3i2m1m"]
+
+[ext_resource type="Script" path="res://assets/vfx/ice_spikes/ice_spikes.gd" id="1_xko22"]
+[ext_resource type="Material" uid="uid://gra1a5ygb2fv" path="res://assets/vfx/ice_spikes/materials/ice_spikes_mat.tres" id="2_bbcxg"]
+[ext_resource type="Material" uid="uid://c6gus7mhso27x" path="res://assets/vfx/ice_spikes/materials/ice_spikes_process_mat.tres" id="3_4pvmw"]
+[ext_resource type="ArrayMesh" uid="uid://c0tkngwxwsqc1" path="res://assets/vfx/ice_spikes/ice_spike.obj" id="4_c2psg"]
+[ext_resource type="Material" uid="uid://b0byehf0b83uf" path="res://assets/vfx/ice_spikes/materials/ice_shards_mat.tres" id="5_ibcsl"]
+[ext_resource type="Shader" path="res://assets/vfx/ice_spikes/ice_shards_process.gdshader" id="6_py0th"]
+[ext_resource type="Material" uid="uid://doyn5fi2yuw30" path="res://assets/vfx/ice_spikes/materials/frost_mat.tres" id="7_5xgtw"]
+
+[sub_resource type="Curve" id="Curve_ahlgd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bsrwy"]
+curve = SubResource("Curve_ahlgd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkm6d"]
+shader = ExtResource("6_py0th")
+shader_parameter/min_scale = 0.5
+shader_parameter/max_scale = 1.0
+shader_parameter/collision_friction = 0.2
+shader_parameter/collision_bounce = 0.5
+shader_parameter/scale_curve = SubResource("CurveTexture_bsrwy")
+
+[sub_resource type="BoxMesh" id="BoxMesh_88e8r"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Shader" id="Shader_xtb6e"]
+code = "shader_type spatial;
+render_mode shadows_disabled;
+
+uniform sampler2D gradient_sampler : filter_linear, source_color, repeat_disable;
+uniform sampler2D noise_sampler : filter_linear, repeat_enable;
+uniform float uv_scale : hint_range(0.0, 1.0, 0.1) = 0.5;
+uniform float energy = 1.0;
+varying vec4 custom;
+
+void vertex() {
+	mat4 mat_world = mat4(normalize(INV_VIEW_MATRIX[0]), normalize(INV_VIEW_MATRIX[1]) ,normalize(INV_VIEW_MATRIX[2]), MODEL_MATRIX[3]);
+	mat_world = mat_world * mat4(vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(0.0, 0.0, 1.0, 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat_world;
+	MODELVIEW_MATRIX = MODELVIEW_MATRIX * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0),vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+	custom = INSTANCE_CUSTOM;
+}
+
+void fragment() {
+	float mask = texture(noise_sampler, UV * uv_scale + custom.z).x - 0.5 + custom.y;
+	float dist = distance(UV, vec2(0.5));
+	float dist_mask = smoothstep(0.45, 0.2, dist);
+	vec3 gradient = texture(gradient_sampler, vec2(mask, 0.0)).rgb;
+	ALBEDO = gradient;
+	EMISSION = ALBEDO * energy;
+	ALPHA = round(dist_mask - mask);
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
+}"
+
+[sub_resource type="Gradient" id="Gradient_y364y"]
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(1, 1, 1, 1, 0.969137, 0.969137, 0.969137, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jmyxr"]
+gradient = SubResource("Gradient_y364y")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3nrb4"]
+noise_type = 2
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_36855"]
+seamless = true
+noise = SubResource("FastNoiseLite_3nrb4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrcrq"]
+render_priority = 0
+shader = SubResource("Shader_xtb6e")
+shader_parameter/uv_scale = 0.3
+shader_parameter/energy = 0.0
+shader_parameter/gradient_sampler = SubResource("GradientTexture1D_jmyxr")
+shader_parameter/noise_sampler = SubResource("NoiseTexture2D_36855")
+
+[sub_resource type="Shader" id="Shader_octm2"]
+code = "shader_type particles;
+
+uniform int particles_count = 8;
+uniform float min_radius = 0.5;
+uniform float max_radius = 1.0;
+uniform float min_scale = 1.0;
+uniform float max_scale = 1.0;
+uniform sampler2D alpha_curve : repeat_disable;
+uniform sampler2D curve_sampler : repeat_disable;
+
+#include \"res://assets/shaders/rotate_x.gdshaderinc\"
+#include \"res://assets/shaders/rotate_y.gdshaderinc\"
+#include \"res://assets/shaders/rotate_z.gdshaderinc\"
+#include \"res://assets/shaders/remap.gdshaderinc\"
+
+float rand_from_seed(in uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0) s = 305420679;
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0) s += 2147483647;
+	seed = uint(s);
+	return float(seed % uint(65536)) / 65535.0;
+}
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+mat4 get_position(mat4 t, vec4 custom, float percent) {
+	float half_pi = PI / 2.0;
+	float circle_angle = 0.8;
+	float half_custom_x = (custom.x - 0.5) * 2.0;
+	float angle = half_pi + half_custom_x * circle_angle;
+	float side_angle = half_custom_x * circle_angle;
+	float radius = max(min_radius, percent * max_radius);
+	// x elevation
+	// y scale
+	vec2 animation = texture(curve_sampler, vec2(custom.y, 0.0)).xy;
+	mat3 rot = rotateY(side_angle) * rotateX(-1.0 * percent) * rotateY(custom.x);
+	float base_scale = remap((1.0 - abs(half_custom_x)) * percent, 0.0, 1.0, min_scale, max_scale) * animation.y;
+	t[0] *= base_scale;
+	t[1] *= base_scale;
+	t[2] *= base_scale;
+	t[3].xyz = vec3(
+		cos(angle) * radius,
+		0.0,
+		sin(angle) * radius);
+	vec3 offset = vec3(0.0, animation.x, 0.0);
+	t *= mat4(rot);
+	t[3].xyz += rot * offset;
+	return t;
+}
+
+void start() {
+	uint alt_seed1 = hash(NUMBER + uint(1) + RANDOM_SEED);
+	uint alt_seed2 = hash(NUMBER + uint(2) + RANDOM_SEED);
+	CUSTOM.x = rand_from_seed(alt_seed1);
+	CUSTOM.y = 0.0;
+	CUSTOM.z = CUSTOM.x;
+	TRANSFORM = EMISSION_TRANSFORM;
+	float percent = float(INDEX) / float(particles_count);
+	TRANSFORM = get_position(TRANSFORM, CUSTOM, percent);
+}
+
+void process() {
+	CUSTOM.y += DELTA / LIFETIME;
+	CUSTOM.y = clamp(CUSTOM.y, 0.0, 1.0);
+	float percent = float(INDEX) / float(particles_count);
+	TRANSFORM = EMISSION_TRANSFORM;
+	TRANSFORM = get_position(TRANSFORM, CUSTOM, percent);
+	COLOR.a = texture(alpha_curve, vec2(CUSTOM.y, 0.0)).x;
+	float emission_curve = texture(curve_sampler, vec2(CUSTOM.y, 0.0)).z;
+	if(emission_curve > 0.0){
+		mat4 custom_transform = TRANSFORM;
+		emit_subparticle(custom_transform, vec3(0.0), vec4(0.0), vec4(0.0), FLAG_EMIT_POSITION);
+	}
+
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3nbu"]
+shader = SubResource("Shader_octm2")
+shader_parameter/particles_count = 8
+shader_parameter/min_radius = 0.5
+shader_parameter/max_radius = 1.0
+shader_parameter/min_scale = 1.0
+shader_parameter/max_scale = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_xm1an"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xti21"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_cl31b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frost:material_override:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IceSpikes:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vapor:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ct3df"]
+resource_name = "default"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frost:material_override:shader_parameter/offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IceSpikes:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vapor:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_to2s0"]
+_data = {
+"RESET": SubResource("Animation_cl31b"),
+"default": SubResource("Animation_ct3df")
+}
+
+[node name="IceAttack" type="Node3D"]
+script = ExtResource("1_xko22")
+
+[node name="IceSpikes" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+material_override = ExtResource("2_bbcxg")
+emitting = false
+amount = 18
+sub_emitter = NodePath("../Shards")
+lifetime = 2.5
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB(-3, -0.5, -2, 6, 4, 8)
+local_coords = true
+process_material = ExtResource("3_4pvmw")
+draw_pass_1 = ExtResource("4_c2psg")
+
+[node name="Shards" type="GPUParticles3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.5, 0)
+material_override = ExtResource("5_ibcsl")
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+interpolate = false
+local_coords = true
+process_material = SubResource("ShaderMaterial_nkm6d")
+draw_pass_1 = SubResource("BoxMesh_88e8r")
+
+[node name="Vapor" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, 0)
+material_override = SubResource("ShaderMaterial_jrcrq")
+emitting = false
+amount = 24
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB(-3, -0.5, -2, 6, 4, 8)
+local_coords = true
+process_material = SubResource("ShaderMaterial_n3nbu")
+draw_pass_1 = SubResource("QuadMesh_xm1an")
+
+[node name="Frost" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, -1.98006)
+material_override = ExtResource("7_5xgtw")
+mesh = SubResource("PlaneMesh_xti21")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_to2s0")
+}

@@ -1,0 +1,178 @@
+[gd_scene load_steps=31 format=3 uid="uid://b0njclhg1d1go"]
+
+[ext_resource type="Script" path="res://assets/vfx/smoke_vfx/smoke_explosion.gd" id="1_qgff4"]
+[ext_resource type="Material" uid="uid://ctnipgxo3l72h" path="res://assets/vfx/smoke_vfx/materials/outer_smoke.tres" id="2_f03xg"]
+[ext_resource type="Shader" path="res://assets/vfx/smoke_vfx/materials/stars.gdshader" id="2_srryq"]
+[ext_resource type="Texture2D" uid="uid://dyn0rlegpkah1" path="res://assets/vfx/smoke_vfx/materials/star_icon.png" id="3_1gu3x"]
+[ext_resource type="ArrayMesh" uid="uid://q7bgkpw4dxp5" path="res://assets/vfx/smoke_vfx/smoke_sphere.obj" id="3_wrdb5"]
+[ext_resource type="Shader" path="res://assets/vfx/smoke_vfx/materials/star_trail.gdshader" id="4_ebckp"]
+[ext_resource type="Material" uid="uid://dr7gyunhpjiwf" path="res://assets/vfx/smoke_vfx/materials/inner_smoke.tres" id="4_ruuov"]
+[ext_resource type="Animation" uid="uid://lx7d4xuqn314" path="res://assets/vfx/smoke_vfx/default.res" id="5_ryyqy"]
+[ext_resource type="AudioStream" uid="uid://wcgmxfexvlrg" path="res://assets/sounds/poof_1.wav" id="9_uo534"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qifn5"]
+render_priority = 0
+shader = ExtResource("2_srryq")
+shader_parameter/shape_sampler = ExtResource("3_1gu3x")
+
+[sub_resource type="Curve" id="Curve_f3nlt"]
+_data = [Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ver5h"]
+curve = SubResource("Curve_f3nlt")
+
+[sub_resource type="Gradient" id="Gradient_6drwb"]
+offsets = PackedFloat32Array(0.834906, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ogmn"]
+gradient = SubResource("Gradient_6drwb")
+
+[sub_resource type="Curve" id="Curve_i5j7u"]
+min_value = -1.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n1ijm"]
+curve = SubResource("Curve_i5j7u")
+
+[sub_resource type="Curve" id="Curve_8ue4b"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ddjp"]
+curve = SubResource("Curve_8ue4b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ol8or"]
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 6.0
+initial_velocity_max = 8.0
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_0ddjp")
+color = Color(1, 0.686275, 0.113725, 1)
+color_ramp = SubResource("GradientTexture1D_2ogmn")
+alpha_curve = SubResource("CurveTexture_ver5h")
+hue_variation_min = -0.5
+hue_variation_max = 0.25
+hue_variation_curve = SubResource("CurveTexture_n1ijm")
+sub_emitter_mode = 1
+sub_emitter_frequency = 40.0
+sub_emitter_keep_velocity = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_cnyrk"]
+size = Vector2(0.8, 0.8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhk7x"]
+render_priority = 0
+shader = ExtResource("4_ebckp")
+
+[sub_resource type="Curve" id="Curve_6isjt"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5na47"]
+curve = SubResource("Curve_6isjt")
+
+[sub_resource type="Gradient" id="Gradient_ce60e"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_351hp"]
+gradient = SubResource("Gradient_ce60e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yejj7"]
+color = Color(0.941176, 0.717647, 0, 1)
+color_ramp = SubResource("GradientTexture1D_351hp")
+alpha_curve = SubResource("CurveTexture_5na47")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ryxmw"]
+shape = 0
+size = 0.1
+
+[sub_resource type="Animation" id="Animation_tkgj6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StarsParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a08pi"]
+_data = {
+"RESET": SubResource("Animation_tkgj6"),
+"poof": ExtResource("5_ryyqy")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_syi02"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("9_uo534")
+stream_0/weight = 1.0
+
+[node name="SmokeExplosion" type="Node3D"]
+script = ExtResource("1_qgff4")
+
+[node name="StarsParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+material_override = SubResource("ShaderMaterial_qifn5")
+emitting = false
+amount = 5
+sub_emitter = NodePath("../TrailParticles")
+one_shot = true
+preprocess = 0.1
+explosiveness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_ol8or")
+draw_pass_1 = SubResource("QuadMesh_cnyrk")
+
+[node name="TrailParticles" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_nhk7x")
+amount = 5
+explosiveness = 1.0
+transform_align = 2
+trail_enabled = true
+trail_lifetime = 0.25
+process_material = SubResource("ParticleProcessMaterial_yejj7")
+draw_pass_1 = SubResource("RibbonTrailMesh_ryxmw")
+
+[node name="OuterSmoke" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("2_f03xg")
+mesh = ExtResource("3_wrdb5")
+
+[node name="InnerSmoke" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("4_ruuov")
+mesh = ExtResource("3_wrdb5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_a08pi")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_syi02")
+volume_db = -3.0

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://rums2vr0qjma"]
+
+[ext_resource type="Script" path="res://feel_goods/player_wiggle/player_wiggle.gd" id="1_gy6r8"]
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://assets/skins/gobot/gobot_skin_3d.tscn" id="3_dhr7s"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7x3c3"]
+height = 1.0
+radius = 0.4
+
+[node name="PlayerWiggle" type="CharacterBody3D"]
+top_level = true
+collision_mask = 14
+floor_constant_speed = true
+script = ExtResource("1_gy6r8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_7x3c3")
+
+[node name="GobotSkin3D" parent="." instance=ExtResource("3_dhr7s")]
+unique_name_in_owner = true
+
+[node name="CameraAnchor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraAnchor"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, 28)
+current = true
+fov = 25.0
+size = 12.555
+near = 15.0
+far = 100.0

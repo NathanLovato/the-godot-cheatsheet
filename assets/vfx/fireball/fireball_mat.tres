@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bf0gyiwcx5np6"]
+
+[ext_resource type="Shader" path="res://assets/vfx/fireball/fireball.gdshader" id="1_c05iu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_c05iu")
+shader_parameter/tail_color = Color(1, 0.701961, 0, 1)
+shader_parameter/head_color = Color(1, 0.45098, 0, 1)

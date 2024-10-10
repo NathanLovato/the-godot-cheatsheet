@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c6gus7mhso27x"]
+
+[ext_resource type="Shader" path="res://assets/vfx/ice_spikes/materials/ice_spikes_process.gdshader" id="1_nk306"]
+
+[resource]
+shader = ExtResource("1_nk306")
