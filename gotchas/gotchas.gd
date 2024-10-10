@@ -20,4 +20,4 @@ func assigning_to_typed_arrays() -> void:
 	character_strings.assign(characters.map(func(char: Dictionary):
 		return "%s is level %d" % [char["name"], char["level"]]
 	))
-	print("\n"".join(character_strings))
+	print("\n".join(character_strings))
