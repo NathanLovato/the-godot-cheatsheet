@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjvm152ewkg3q"]
+
+[ext_resource type="Script" path="res://power_user_moves/selection_with_areas/selection_2d.gd" id="1_eu6xl"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+
+[node name="Selection2D" type="Area2D"]
+collision_layer = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_eu6xl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("1")

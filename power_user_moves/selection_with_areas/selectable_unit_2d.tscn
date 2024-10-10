@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d28ylcxep0bdd"]
+
+[ext_resource type="Texture2D" uid="uid://c0toqd3q4yyaa" path="res://power_user_moves/selection_with_areas/ship.png" id="1"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 57.7574
+
+[node name="SelectableUnit2D" type="Area2D"]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")

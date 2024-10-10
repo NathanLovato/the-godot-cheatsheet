@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh47foft4coke"]
+
+[ext_resource type="PackedScene" uid="uid://d28ylcxep0bdd" path="res://power_user_moves/selection_with_areas/selectable_unit_2d.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bjvm152ewkg3q" path="res://power_user_moves/selection_with_areas/selection_2d.tscn" id="1_wtx5o"]
+
+[node name="TacticalUnitSelection2D" type="Node2D"]
+
+[node name="SelectionArea2D" parent="." instance=ExtResource("1_wtx5o")]
+z_index = 10
+
+[node name="SelectableUnit2D" parent="." instance=ExtResource("1")]
+position = Vector2(812.05, 486.179)
+rotation = -0.650624
+
+[node name="SelectableUnit2D5" parent="." instance=ExtResource("1")]
+position = Vector2(537, 251)
+rotation = -1.13767
+
+[node name="SelectableUnit2D6" parent="." instance=ExtResource("1")]
+position = Vector2(1245, 367)
+rotation = 0.594931
+
+[node name="SelectableUnit2D7" parent="." instance=ExtResource("1")]
+position = Vector2(1203, 737)
+rotation = 1.71637
+
+[node name="SelectableUnit2D2" parent="." instance=ExtResource("1")]
+position = Vector2(622, 693)
+rotation = -2.38828
+scale = Vector2(1, 1)
+
+[node name="SelectableUnit2D3" parent="." instance=ExtResource("1")]
+position = Vector2(934.274, 481.45)
+rotation = 0.337455
+
+[node name="SelectableUnit2D4" parent="." instance=ExtResource("1")]
+position = Vector2(875.985, 435.312)
+rotation = 0.057641

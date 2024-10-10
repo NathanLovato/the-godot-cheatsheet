@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq33v71x2a0hm"]
-
-[ext_resource type="Script" path="res://power_user_moves/useful_snippets.gd" id="1_e8rqr"]
-
-[node name="UsefulSnippets" type="Node"]
-script = ExtResource("1_e8rqr")
