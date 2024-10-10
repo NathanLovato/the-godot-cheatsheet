@@ -1,0 +1,762 @@
+[gd_scene load_steps=28 format=3 uid="uid://hjn4sr1lgmmx"]
+
+[ext_resource type="Script" path="res://impress_your_friends/runner/runner_visual.gd" id="1_d11tw"]
+[ext_resource type="Texture2D" uid="uid://bvitrnb3tfw0k" path="res://impress_your_friends/runner/base_parts/foot.png" id="2_ay0ik"]
+[ext_resource type="Texture2D" uid="uid://bhnuxmhbdtai3" path="res://impress_your_friends/runner/base_parts/body.png" id="3_ekfnj"]
+[ext_resource type="Texture2D" uid="uid://ba6ahww3ia6k8" path="res://impress_your_friends/runner/base_parts/head.png" id="4_v3uea"]
+[ext_resource type="Texture2D" uid="uid://ca2e4n30th6xv" path="res://impress_your_friends/runner/base_parts/face.png" id="5_w81mm"]
+[ext_resource type="Texture2D" uid="uid://cpqt5yxwbsijv" path="res://impress_your_friends/runner/base_parts/face_back.png" id="6_op40g"]
+[ext_resource type="Texture2D" uid="uid://ct7gndp2bw5v2" path="res://impress_your_friends/runner/base_parts/ear.png" id="7_q8la0"]
+[ext_resource type="Texture2D" uid="uid://dplmf714cj3v8" path="res://impress_your_friends/runner/base_parts/antenna.png" id="8_h1ols"]
+[ext_resource type="Texture2D" uid="uid://s7vhdsbx7hnc" path="res://impress_your_friends/runner/base_parts/hand.png" id="9_ea8vt"]
+[ext_resource type="Texture2D" uid="uid://dnukr2y2bp2t4" path="res://impress_your_friends/runner/base_parts/player_ref.png" id="10_u6jsj"]
+
+[sub_resource type="Animation" id="Animation_37rlr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/Body:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-120.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/Body/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -220)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/FeetAnchor/FootL:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Root/FeetAnchor/FootR:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Root/Body/HandAnchor/HandL:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Root/Body/HandAnchor/HandR:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Root/FeetAnchor/FootL:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-16.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Root/FeetAnchor/FootR:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Visual/FootL/FootSprite:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Visual/FootR/FootSprite:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Root/Body/HandAnchor:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Root/Body/HandAnchor/HandR:position:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [48.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Root/Body/HandAnchor/HandL:position:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-48.0]
+}
+
+[sub_resource type="Animation" id="Animation_13v33"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/Body:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-110.0, -140.0, -110.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/Body/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.4, 2.4),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, -215), Vector2(0, -225), Vector2(0, -215)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/FeetAnchor/FootL:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Root/FeetAnchor/FootR:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visual/FootL/FootSprite:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visual/FootR/FootSprite:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Root/Body/HandAnchor:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Root/Body/HandAnchor/HandL:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Root/Body/HandAnchor/HandR:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fpplh"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/FeetAnchor/FootL:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [16.0, -32.0, 16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/FeetAnchor/FootR:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-32.0, 16.0, -32.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/Body:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.2, 0.325, 0.4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [-160.0, -100.0, -160.0, -100.0, -160.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Root/Body/HandAnchor/HandL:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [-20.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Root/Body/HandAnchor/HandR:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [-20.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visual/FootL/FootSprite:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 0.0, -24.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Visual/FootR/FootSprite:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, -24.0, 0.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Root/Body/HandAnchor:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05, 0.25, 0.45),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-10.0, 20.0, -10.0]
+}
+
+[sub_resource type="Animation" id="Animation_jdqcd"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/FeetAnchor/FootL:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [16.0, -32.0, 16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/FeetAnchor/FootR:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-32.0, 16.0, -32.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/Body:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [-100.0, -140.0, -100.0, -140.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Root/Body/HandAnchor/HandL:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-16.0, 16.0, -16.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Root/Body/HandAnchor/HandR:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [16.0, -16.0, 16.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visual/FootL/FootSprite:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 0.0, -16.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Visual/FootR/FootSprite:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, -16.0, 0.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Root/Body/HandAnchor:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cx3nc"]
+_data = {
+"RESET": SubResource("Animation_37rlr"),
+"idle": SubResource("Animation_13v33"),
+"run": SubResource("Animation_fpplh"),
+"walk": SubResource("Animation_jdqcd")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ynm1x"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_phsjk"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3omcv"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lx7tl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mtup2"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o38qp"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fmueu"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iv1jp"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2i75c"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0aotu"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0ijii"]
+states/idle/node = SubResource("AnimationNodeAnimation_ynm1x")
+states/idle/position = Vector2(335, 95)
+states/run/node = SubResource("AnimationNodeAnimation_phsjk")
+states/run/position = Vector2(406, 187)
+states/walk/node = SubResource("AnimationNodeAnimation_3omcv")
+states/walk/position = Vector2(478, 95)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_lx7tl"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_mtup2"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_o38qp"), "run", "walk", SubResource("AnimationNodeStateMachineTransition_fmueu"), "walk", "run", SubResource("AnimationNodeStateMachineTransition_iv1jp"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_2i75c"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_0aotu")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kce0i"]
+graph_offset = Vector2(-11.52, 51.84)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_0ijii")
+nodes/StateMachine/position = Vector2(200, 120)
+nodes/output/position = Vector2(400, 120)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[node name="RunnerVisualBlue" type="Node2D"]
+script = ExtResource("1_d11tw")
+metadata/_edit_vertical_guides_ = [-573.0]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="FootL" type="Node2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(-16, -23)
+rotation = 0.5
+scale = Vector2(0.999976, 0.999977)
+skew = -2.44379e-05
+
+[node name="FootSprite" type="Sprite2D" parent="Visual/FootL"]
+texture = ExtResource("2_ay0ik")
+offset = Vector2(0, 12)
+
+[node name="FootR" type="Node2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(16, -23)
+rotation = -0.5
+scale = Vector2(0.999918, 0.999922)
+skew = -2.12193e-05
+
+[node name="FootSprite" type="Sprite2D" parent="Visual/FootR"]
+texture = ExtResource("2_ay0ik")
+offset = Vector2(0, 12)
+
+[node name="ArmR" type="Line2D" parent="Visual"]
+unique_name_in_owner = true
+self_modulate = Color(0.529549, 0.45481, 0.988266, 1)
+points = PackedVector2Array(16, -67.0829, 48, -41.0829)
+width = 18.0
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="ArmL" type="Line2D" parent="Visual"]
+unique_name_in_owner = true
+self_modulate = Color(0.529549, 0.45481, 0.988266, 1)
+points = PackedVector2Array(-16, -67.0829, -48, -41.0829)
+width = 18.0
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="LegR" type="Line2D" parent="Visual"]
+unique_name_in_owner = true
+self_modulate = Color(0.529549, 0.45481, 0.988266, 1)
+points = PackedVector2Array(16, -33.0829, 16, -23)
+width = 22.0
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="LegL" type="Line2D" parent="Visual"]
+unique_name_in_owner = true
+self_modulate = Color(0.529549, 0.45481, 0.988266, 1)
+points = PackedVector2Array(-16, -33.0829, -16, -23)
+width = 22.0
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Body" type="Sprite2D" parent="Visual"]
+position = Vector2(0, -49.2829)
+texture = ExtResource("3_ekfnj")
+
+[node name="HeadShape" type="Sprite2D" parent="Visual"]
+clip_children = 2
+z_index = 1
+position = Vector2(0, -135.296)
+texture = ExtResource("4_v3uea")
+
+[node name="Face" type="Sprite2D" parent="Visual/HeadShape"]
+unique_name_in_owner = true
+texture_repeat = 1
+texture = ExtResource("5_w81mm")
+
+[node name="Back" type="Sprite2D" parent="Visual/HeadShape"]
+unique_name_in_owner = true
+texture_repeat = 1
+position = Vector2(160, 0)
+texture = ExtResource("6_op40g")
+
+[node name="EarR" type="Sprite2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(82, -124.633)
+texture = ExtResource("7_q8la0")
+
+[node name="AntennaR" type="Sprite2D" parent="Visual/EarR"]
+unique_name_in_owner = true
+position = Vector2(4, -14)
+rotation = 0.5
+texture = ExtResource("8_h1ols")
+offset = Vector2(0, -10)
+
+[node name="EarL" type="Sprite2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(-82, -124.633)
+texture = ExtResource("7_q8la0")
+
+[node name="AntennaL" type="Sprite2D" parent="Visual/EarL"]
+unique_name_in_owner = true
+position = Vector2(-4, -14)
+rotation = -0.5
+texture = ExtResource("8_h1ols")
+offset = Vector2(0, -10)
+
+[node name="HandR" type="Sprite2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(48, -41.2829)
+texture = ExtResource("9_ea8vt")
+
+[node name="HandL" type="Sprite2D" parent="Visual"]
+unique_name_in_owner = true
+position = Vector2(-48, -41.2829)
+texture = ExtResource("9_ea8vt")
+
+[node name="Root" type="Node2D" parent="."]
+scale = Vector2(1, 0.4)
+
+[node name="Body" type="RemoteTransform2D" parent="Root"]
+position = Vector2(0, -120)
+remote_path = NodePath("../../Visual/Body")
+update_rotation = false
+update_scale = false
+
+[node name="HandAnchor" type="Node2D" parent="Root/Body"]
+unique_name_in_owner = true
+position = Vector2(0, 20)
+
+[node name="HandL" type="RemoteTransform2D" parent="Root/Body/HandAnchor"]
+position = Vector2(-48, 0)
+remote_path = NodePath("../../../../Visual/HandL")
+update_rotation = false
+update_scale = false
+
+[node name="HandR" type="RemoteTransform2D" parent="Root/Body/HandAnchor"]
+position = Vector2(48, 0)
+remote_path = NodePath("../../../../Visual/HandR")
+update_rotation = false
+update_scale = false
+
+[node name="ShoulderAnchor" type="Node2D" parent="Root/Body"]
+unique_name_in_owner = true
+position = Vector2(0, -45)
+
+[node name="ShoulderL" type="Marker2D" parent="Root/Body/ShoulderAnchor"]
+unique_name_in_owner = true
+position = Vector2(-16, 0)
+
+[node name="ShoulderR" type="Marker2D" parent="Root/Body/ShoulderAnchor"]
+unique_name_in_owner = true
+position = Vector2(16, 0)
+
+[node name="HipsAnchor" type="Node2D" parent="Root/Body"]
+unique_name_in_owner = true
+position = Vector2(0, 40)
+
+[node name="HipsL" type="Marker2D" parent="Root/Body/HipsAnchor"]
+unique_name_in_owner = true
+position = Vector2(-16, 0)
+
+[node name="HipsR" type="Marker2D" parent="Root/Body/HipsAnchor"]
+unique_name_in_owner = true
+position = Vector2(16, 0)
+
+[node name="Head" type="RemoteTransform2D" parent="Root/Body"]
+position = Vector2(0, -220)
+remote_path = NodePath("../../../Visual/HeadShape")
+update_rotation = false
+update_scale = false
+
+[node name="EarAnchor" type="Node2D" parent="Root/Body/Head"]
+unique_name_in_owner = true
+position = Vector2(0, 26.657)
+
+[node name="EarL" type="RemoteTransform2D" parent="Root/Body/Head/EarAnchor"]
+position = Vector2(-82, 0)
+remote_path = NodePath("../../../../../Visual/EarL")
+update_rotation = false
+update_scale = false
+
+[node name="EarR" type="RemoteTransform2D" parent="Root/Body/Head/EarAnchor"]
+position = Vector2(82, 0)
+remote_path = NodePath("../../../../../Visual/EarR")
+update_rotation = false
+update_scale = false
+
+[node name="FeetAnchor" type="Node2D" parent="Root"]
+unique_name_in_owner = true
+position = Vector2(0, -57.5)
+
+[node name="FootL" type="RemoteTransform2D" parent="Root/FeetAnchor"]
+position = Vector2(-16, 0)
+remote_path = NodePath("../../../Visual/FootL")
+update_rotation = false
+update_scale = false
+
+[node name="FootR" type="RemoteTransform2D" parent="Root/FeetAnchor"]
+position = Vector2(16, 0)
+remote_path = NodePath("../../../Visual/FootR")
+update_rotation = false
+update_scale = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cx3nc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeBlendTree_kce0i")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="PlayerRef" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -96)
+texture = ExtResource("10_u6jsj")
