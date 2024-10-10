@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcgjwh880qh8d"]
+
+[ext_resource type="Script" path="res://impress_your_friends/custom_node/vector_3d.gd" id="1_2oqe1"]
+
+[node name="TestVectorNode" type="Node3D"]
+
+[node name="Vector3D" type="Node3D" parent="."]
+script = ExtResource("1_2oqe1")
+vector = Vector3(1.84, 1.346, -0.474)
+color = Color(0.552941, 0.0980392, 0.843137, 1)
+pointer_radius = 0.161
+pointer_height = 0.264
