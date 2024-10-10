@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4jfm56p031k3"]
 
-[ext_resource type="Script" path="res://code_sorcery/grid_test.gd" id="1_oyvl1"]
+[ext_resource type="Script" path="res://code_sorcery/grid_iterator/grid_test.gd" id="1_oyvl1"]
 
 [node name="GridTest" type="Node2D"]
 script = ExtResource("1_oyvl1")

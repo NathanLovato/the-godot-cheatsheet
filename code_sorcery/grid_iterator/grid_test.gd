@@ -3,7 +3,7 @@ extends Node2D
 
 const GRID_SIZE := Vector2i(5, 5)
 
-var grid_iterator := preload("res://code_sorcery/grid_iterator_2d.gd").new()
+var grid_iterator := preload("grid_iterator_2d.gd").new()
 
 
 func _ready() -> void:
