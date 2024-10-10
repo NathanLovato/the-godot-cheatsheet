@@ -1,39 +1,15 @@
 ## Virtual base class for stats (health, speed...) that support upgrades.
 ##
-## You must call [initialize()] to initialize the stats' values. This ensures that they are in sync
-## with the values modified in Godot's inspector.
-##
 ## Each stat should be a floating point value, and we recommend to make them private properties, as
 ## they should be read-only. To get a stat's calculated value, with modifiers, see [get_stat()].
 class_name Stats extends Resource
 
 ## Emitted when a stat's value changes.
-signal stat_changed(stat, old_value, new_value)
+signal stat_changed(stat: String, old_value, new_value)
 
-# Stores a cached array of property names that are stats as strings, that we use to find and
-# calculate the stats with upgrades from the base stats.
-var _stats_list: Dictionary = (func _get_stats_list() -> Dictionary:
-	var stats := {}
-	var ignore := [
-		"resource_scene_unique_id",
-		"resource_local_to_scene",
-		"resource_name",
-		"resource_path",
-		"script",
-		"_stats_list",
-		"_modifiers",
-		"_cache"
-	]
-	for p in get_property_list():
-		if p.name[0].capitalize() == p.name[0]:
-			continue
-		if p.name in ignore:
-			continue
-		if p.name.ends_with(".gd"):
-			continue
-		stats[p.name.lstrip("_")] = p.name
-	return stats
-).call()
+## Stores a cached array of property names that are stats as strings, that we use to find and
+## calculate the stats with upgrades from the base stats.
+var _stats_list: Array[String] = preload("get_clean_property_list.gd").get_clean_property_list(self)
 
 ## This is a list of modifiers for each property in `_stats_list`. A modifier is a dict that
 ## requires a key named `value`. The value of a modifier can be positive or negative.
@@ -50,6 +26,8 @@ func _init() -> void:
 		_cache[stat] = 0.0
 	_update_all()
 
+func get_stat_names() -> Array[String]:
+	return _stats_list.duplicate()
 
 ## Get the final value of a stat, with all modifiers applied to it.
 func get_stat(stat_name := "") -> float:
@@ -85,9 +63,20 @@ func reset() -> void:
 	_update_all()
 
 
+## Prints all the stats and their final value to the Output panel.
+func print() -> void:
+	var max_stat_name_length := 0
+	for stat_name in _stats_list:
+		max_stat_name_length = max(max_stat_name_length, stat_name.length())
+
+	for stat_name in _stats_list:
+		var padding = " ".repeat(max_stat_name_length - stat_name.length())
+		print("%s:%s %s" % [stat_name, padding, get_stat(stat_name)])
+
+
 ## Calculates the final value of a single stat: its base value with all modifiers applied.
 func _update(stat: String = "") -> void:
-	var value_start: float = self.get(_stats_list[stat])
+	var value_start: float = get(stat)
 	var value = value_start
 	for modifier in _modifiers[stat]:
 		value += modifier
