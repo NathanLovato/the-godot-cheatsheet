@@ -5,7 +5,7 @@ extends Node
 @export_category("Animation")
 
 # This annotation displays angles as degrees in the inspector but stores them as radians.
-@export_range(-PI, PI, 0.001, "radians_as_degrees") var angle := 0.0
+@export_range(-180, 180, 0.001, "radians_as_degrees") var angle := 0.0
 # This annotation creates a limited range but allows the user to enter values greater than the maximum manually.
 # The "suffix:" argument adds a suffix to the label in the inspector.
 @export_range(0.01, 2.0, 0.01, "or_greater", "suffix:s") var duration := 1.0
