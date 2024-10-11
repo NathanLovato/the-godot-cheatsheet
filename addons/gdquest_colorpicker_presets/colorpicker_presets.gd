@@ -12,7 +12,6 @@ func _enter_tree() -> void:
 		presets_raw = presets_raw.slice(presets_raw.find("#") + 1)
 		var presets := Array(presets_raw).map(
 			func(string: String):
-				print(string)
 				var rgb := (Array(string.strip_edges().split(" ").slice(0, -1))
 					.filter(func(string: String): return not string.is_empty())
 					.map(func(string: String): return string.to_int())
