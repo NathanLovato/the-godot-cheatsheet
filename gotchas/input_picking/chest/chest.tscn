@@ -1,0 +1,232 @@
+[gd_scene load_steps=17 format=3 uid="uid://nf6xrur1ocwb"]
+
+[ext_resource type="Texture2D" uid="uid://b44tp4giui8ry" path="res://gotchas/input_picking/chest/bottom.png" id="1_4fyto"]
+[ext_resource type="Script" path="res://gotchas/input_picking/chest/chest.gd" id="1_8vpfw"]
+[ext_resource type="Shader" path="res://gotchas/input_picking/chest/group_outline.gdshader" id="1_umgkq"]
+[ext_resource type="Texture2D" uid="uid://cssqnslnr35q2" path="res://gotchas/input_picking/chest/top.png" id="2_2tvtg"]
+[ext_resource type="Texture2D" uid="uid://by6gtphvftx40" path="res://gotchas/input_picking/chest/lock.png" id="3_qqd1m"]
+[ext_resource type="Texture2D" uid="uid://b01mnp8qxfbh7" path="res://assets/small_circle.png" id="5_gf8m0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_julvn"]
+size = Vector2(100, 84)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddq50"]
+resource_local_to_scene = true
+shader = ExtResource("1_umgkq")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 4.5
+shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_ygbtf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasGroup:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasGroup/Top:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasGroup/Top:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasGroup/Top:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vnt3u"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.8), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasGroup/Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.20944]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasGroup/Top:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(37, -85), Vector2(73, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasGroup/Top:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.20944]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Smoke:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasGroup:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8ltj"]
+_data = {
+"RESET": SubResource("Animation_ygbtf"),
+"open": SubResource("Animation_vnt3u")
+}
+
+[sub_resource type="Gradient" id="Gradient_tdof1"]
+offsets = PackedFloat32Array(0.6, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ixlcs"]
+gradient = SubResource("Gradient_tdof1")
+
+[sub_resource type="Curve" id="Curve_h2648"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.607717, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_10l32"]
+curve = SubResource("Curve_h2648")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6lgx"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 80.0
+initial_velocity_min = 40.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -100, 0)
+damping_min = 20.0
+damping_max = 40.0
+scale_min = 0.4
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_10l32")
+color_ramp = SubResource("GradientTexture1D_ixlcs")
+
+[node name="Chest" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_8vpfw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_julvn")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_ddq50")
+position = Vector2(0, 33)
+
+[node name="Bottom" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(0, -61)
+texture = ExtResource("1_4fyto")
+offset = Vector2(0, 34)
+
+[node name="Top" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(0, -48)
+texture = ExtResource("2_2tvtg")
+offset = Vector2(0, 5)
+
+[node name="Lock" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(0, -10)
+texture = ExtResource("3_qqd1m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t8ltj")
+}
+
+[node name="Smoke" type="GPUParticles2D" parent="."]
+z_index = 2
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_g6lgx")
+texture = ExtResource("5_gf8m0")
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0

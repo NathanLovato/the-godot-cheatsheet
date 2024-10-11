@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1gl6p4trbryr"]
+
+[ext_resource type="Script" path="res://gotchas/input_picking/items/item_with_picking.gd" id="1_bfm15"]
+[ext_resource type="Texture2D" uid="uid://clsn2076o24kq" path="res://gotchas/input_picking/items/apple.png" id="2_5w6yb"]
+[ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/sparks_particles.tscn" id="3_3656w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63pc6"]
+radius = 25.0
+
+[node name="Apple" type="Area2D" groups=["gem"]]
+collision_layer = 2
+script = ExtResource("1_bfm15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_63pc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.729167, 0.729167)
+texture = ExtResource("2_5w6yb")
+
+[node name="Sparks" parent="." instance=ExtResource("3_3656w")]

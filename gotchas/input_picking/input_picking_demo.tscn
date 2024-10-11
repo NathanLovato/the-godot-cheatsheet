@@ -1,0 +1,335 @@
+[gd_scene load_steps=15 format=3 uid="uid://d0i70pyigv2lx"]
+
+[ext_resource type="Texture2D" uid="uid://114x1a0rmx4l" path="res://gotchas/input_picking/dungeon/smooth_dungeon_tileset.png" id="1_qv4bc"]
+[ext_resource type="Script" path="res://gotchas/input_picking/input_picking_demo.gd" id="1_tjcm2"]
+[ext_resource type="Texture2D" uid="uid://cae527caaj50v" path="res://gotchas/input_picking/dungeon/shadow_map.png" id="2_y4cjh"]
+[ext_resource type="Texture2D" uid="uid://dpym64uaptlhb" path="res://gotchas/input_picking/dungeon/grass_tileset.png" id="3_h56qn"]
+[ext_resource type="Texture2D" uid="uid://c1rgncfgjxefj" path="res://gotchas/input_picking/dungeon/pillar.png" id="4_3tpno"]
+[ext_resource type="Texture2D" uid="uid://l0y1k1obencd" path="res://gotchas/input_picking/dungeon/spider_web.png" id="5_w76b5"]
+[ext_resource type="PackedScene" uid="uid://nf6xrur1ocwb" path="res://gotchas/input_picking/chest/chest.tscn" id="7_fanmo"]
+[ext_resource type="PackedScene" uid="uid://dl551heh7mtm7" path="res://gotchas/input_picking/items/key.tscn" id="8_ytiwu"]
+[ext_resource type="PackedScene" uid="uid://d1gl6p4trbryr" path="res://gotchas/input_picking/items/apple.tscn" id="9_7nogg"]
+[ext_resource type="PackedScene" uid="uid://kbnutvw2tcqh" path="res://gotchas/input_picking/items/potion.tscn" id="10_ng5wy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6s4s5"]
+texture = ExtResource("1_qv4bc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:0/0 = 0
+8:1/0 = 0
+9:0/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ftk2"]
+texture = ExtResource("2_y4cjh")
+texture_region_size = Vector2i(64, 64)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+13:1/0 = 0
+13:4/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:4/0 = 0
+14:2/0 = 0
+14:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m6vh0"]
+texture = ExtResource("3_h56qn")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/right_side = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/terrains_peering_bit/bottom_left_corner = 0
+3:0/0/terrains_peering_bit/left_side = 0
+3:0/0/terrains_peering_bit/top_left_corner = 0
+3:0/0/terrains_peering_bit/top_side = 0
+3:0/0/terrains_peering_bit/top_right_corner = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/terrains_peering_bit/right_side = 0
+4:0/0/terrains_peering_bit/bottom_right_corner = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+4:0/0/terrains_peering_bit/left_side = 0
+4:0/0/terrains_peering_bit/top_left_corner = 0
+4:0/0/terrains_peering_bit/top_side = 0
+4:0/0/terrains_peering_bit/top_right_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/right_side = 0
+3:1/0/terrains_peering_bit/bottom_right_corner = 0
+3:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/left_side = 0
+3:1/0/terrains_peering_bit/top_left_corner = 0
+3:1/0/terrains_peering_bit/top_side = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/terrain = 0
+4:1/0/terrains_peering_bit/right_side = 0
+4:1/0/terrains_peering_bit/bottom_right_corner = 0
+4:1/0/terrains_peering_bit/bottom_side = 0
+4:1/0/terrains_peering_bit/bottom_left_corner = 0
+4:1/0/terrains_peering_bit/left_side = 0
+4:1/0/terrains_peering_bit/top_side = 0
+4:1/0/terrains_peering_bit/top_right_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/probability = 0.2
+3:2/0/terrains_peering_bit/right_side = 0
+3:2/0/terrains_peering_bit/bottom_right_corner = 0
+3:2/0/terrains_peering_bit/bottom_side = 0
+3:2/0/terrains_peering_bit/bottom_left_corner = 0
+3:2/0/terrains_peering_bit/left_side = 0
+3:2/0/terrains_peering_bit/top_left_corner = 0
+3:2/0/terrains_peering_bit/top_side = 0
+3:2/0/terrains_peering_bit/top_right_corner = 0
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 0
+4:2/0/probability = 0.2
+4:2/0/terrains_peering_bit/right_side = 0
+4:2/0/terrains_peering_bit/bottom_right_corner = 0
+4:2/0/terrains_peering_bit/bottom_side = 0
+4:2/0/terrains_peering_bit/bottom_left_corner = 0
+4:2/0/terrains_peering_bit/left_side = 0
+4:2/0/terrains_peering_bit/top_left_corner = 0
+4:2/0/terrains_peering_bit/top_side = 0
+4:2/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_70ny8"]
+tile_size = Vector2i(64, 64)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "grass"
+terrain_set_0/terrain_0/color = Color(0.32549, 0.756863, 0.32549, 1)
+sources/1 = SubResource("TileSetAtlasSource_6s4s5")
+sources/2 = SubResource("TileSetAtlasSource_4ftk2")
+sources/3 = SubResource("TileSetAtlasSource_m6vh0")
+
+[node name="InputPickingDemo" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_tjcm2")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Background" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMap" type="TileMap" parent="Background"]
+tile_set = SubResource("TileSet_70ny8")
+rendering_quadrant_size = 64
+format = 2
+layer_0/name = "shadow"
+layer_0/modulate = Color(0.360784, 0.196078, 0.552941, 0.533333)
+layer_0/tile_data = PackedInt32Array(524295, 65538, 4, 524296, 131074, 4, 524297, 131074, 4, 524298, 131074, 4, 524299, 131074, 4, 524300, 131074, 4, 524301, 196610, 4, 327694, 196610, 3, 327695, 196610, 3, 458758, 720898, 3, 458757, 131074, 4, 458756, 65538, 4, 524302, 262146, 4, 458766, 262146, 3, 262159, 262146, 1, 262160, 262146, 2, 327696, 262146, 3, 65552, 196610, 3, 131088, 524290, 3, 65553, 262146, 3, 131089, 262146, 4, 16, 196610, 1, 17, 262146, 1, 458765, 196610, 3, 393220, 65538, 3, 327683, 65538, 3, 196609, 65538, 3, 131073, 65538, 1, 65537, 65538, 0, 262144, 2, 4, 262145, 65538, 4, 262146, 655362, 1, 196608, 2, 3, 131072, 2, 1, 458759, 65538, 3, 393219, 393218, 3, 458755, 2, 4, 327682, 2, 3, 393218, 2, 4, 393231, 196610, 4, 393232, 262146, 4, -65520, 196610, 0, 196624, 262146, 2, 458764, 131074, 3, 458763, 131074, 3, 458762, 131074, 3, 458761, 131074, 3, 458760, 131074, 3, 524294, 2, 4, 65538, 131074, 0, 131074, 131074, 1, -65521, 131074, 0, 15, 131074, 1, 393230, 720898, 1)
+layer_1/name = "ground"
+layer_1/tile_data = PackedInt32Array(131073, 327681, 0, 196609, 327681, 2, 131074, 393217, 1, 196610, 393217, 2, 131075, 393217, 1, 196611, 393217, 1, 131076, 393217, 1, 196612, 393217, 1, 131077, 393217, 1, 196613, 393217, 1, 131078, 393217, 1, 196614, 327681, 3, 131079, 393217, 1, 196615, 393217, 3, 131080, 393217, 1, 196616, 458753, 3, 131081, 393217, 1, 196617, 327681, 4, 131082, 393217, 1, 196618, 393217, 4, 131083, 393217, 1, 196619, 458753, 4, 131084, 393217, 1, 196620, 393217, 1, 131085, 393217, 1, 196621, 393217, 1, 262148, 393217, 1, 262149, 393217, 1, 262150, 327681, 4, 262151, 393217, 4, 327687, 393217, 4, 262152, 458753, 4, 327688, 458753, 4, 262153, 393217, 1, 327689, 393217, 1, 393225, 393217, 1, 262154, 327681, 3, 327690, 327681, 4, 393226, 327681, 4, 262155, 393217, 3, 327691, 393217, 4, 393227, 393217, 4, 262156, 458753, 3, 393228, 458753, 4, 262157, 393217, 1, 327693, 589825, 1, 393229, 458753, 1, 3, 393217, 1, 65539, 393217, 1, 4, 393217, 1, 65540, 393217, 1, 5, 393217, 1, 65541, 393217, 1, 6, 393217, 1, 65542, 393217, 1, 7, 393217, 1, 65543, 393217, 1, 8, 393217, 1, 65544, 393217, 1, 9, 393217, 1, 65545, 393217, 1, 10, 393217, 1, 65546, 393217, 1, 11, 393217, 1, 65547, 393217, 1, 12, 393217, 1, 65548, 393217, 1, 13, 393217, 1, 65549, 393217, 1, 14, 393217, 1, 65550, 393217, 1, 15, 393217, 1, 65551, 393217, 1, 16, 458753, 0, 65552, 458753, 2, 458759, 327681, 2, 458760, 393217, 2, 458761, 393217, 2, 458762, 393217, 2, 458763, 393217, 2, 458764, 393217, 2, 458765, 458753, 2, 327684, 393217, 1, 327685, 393217, 1, 327686, 327681, 4, 393222, 393217, 2, 393221, 393217, 2, 393220, 327681, 2, 393223, 524289, 1, 393224, 393217, 1, 327694, 393217, 2, 327695, 458753, 2, 262158, 393217, 1, 262159, 458753, 1, 327692, 458753, 4)
+layer_2/name = "ground_top"
+layer_2/tile_data = PackedInt32Array(131083, 65539, 0, 196619, 262147, 0, 262155, 3, 2, 131084, 65539, 0, 196620, 65539, 1, 262156, 65539, 2, 131085, 131075, 0, 196621, 131075, 1, 262157, 262147, 0, 196618, 3, 2, 131082, 3, 0, 327694, 65539, 2, 262158, 65539, 0, 327695, 131075, 2, 262159, 131075, 0, 327693, 3, 2, 262150, 131075, 2, 196614, 131075, 1, 131078, 131075, 0, 262149, 196611, 0, 196613, 196611, 2, 131077, 65539, 0, 262148, 3, 1, 196612, 3, 1, 131076, 3, 0, 327685, 131075, 1, 327684, 3, 1, 393221, 131075, 2, 393220, 3, 2, 458762, 65539, 2, 393226, 196611, 1, 458761, 65539, 2, 393225, 262147, 1, 458760, 3, 2, 393224, 3, 0, 327690, 131075, 0, 327689, 3, 0, 393227, 65539, 0, 393228, 131075, 0, 458764, 131075, 2, 458763, 65539, 2)
+layer_3/name = "walls"
+layer_3/tile_data = PackedInt32Array(262147, 1, 3, 327683, 1, 4, 262148, 131073, 3, 327684, 131073, 4, 65541, 65537, 3, 131077, 65537, 4, 65542, 65537, 3, 131078, 65537, 4, 65543, 65537, 3, 131079, 65537, 4, 65544, 65537, 3, 131080, 65537, 4, 65545, 65537, 3, 131081, 65537, 4, 65546, 65537, 3, 131082, 65537, 4, 65547, 65537, 3, 131083, 65537, 4, 65548, 65537, 3, 131084, 65537, 4, 196621, 1, 3, 196622, 65537, 3, 196623, 131073, 3, 262159, 131073, 4, 262158, 65537, 4, 262157, 1, 4, 131074, 1, 4, 196611, 1, 2, 196612, 131073, 2, -65534, 1, 0, -65533, 65537, 0, -65532, 65537, 0, -65531, 65537, 0, -65530, 65537, 0, -65529, 65537, 0, -65528, 65537, 0, -65527, 65537, 0, -65526, 196609, 0, -65525, 65537, 1, -65524, 262145, 0, -65523, 65537, 0, -65522, 65537, 0, -65521, 131073, 0, 131087, 131073, 2, 65549, 196609, 2, 131085, 1, 2, 65550, 65537, 1, 131086, 65537, 2, 15, 131073, 1, 65551, 131073, 1, 5, 65537, 2, 6, 65537, 2, 7, 65537, 2, 8, 65537, 2, 9, 65537, 2, 10, 65537, 2, 11, 65537, 2, 12, 65537, 2, 13, 196609, 1, 4, 262145, 1, 131076, 131073, 1, 65540, 262145, 2, 14, 65537, 1, 65538, 1, 3, 2, 1, 2, 3, 196609, 1, 65539, 196609, 2, 131075, 1, 1, -131062, 1, 0, -131061, 65537, 0, -131060, 131073, 0)
+layer_4/name = "walls_top"
+layer_4/tile_data = PackedInt32Array(65547, 262145, 4, 131083, 262145, 5, 65542, 262145, 4, 131078, 262145, 5, 65538, 196609, 4, 196623, 196609, 4, 196622, 262145, 4, 262158, 262145, 5, 196621, 196609, 4, 3, 262147, 0, 2, 3, 2, 65551, 131075, 1, 131087, 131075, 2, 131086, 65539, 2, 65550, 262147, 2, 65549, 3, 1, 131085, 3, 2, 15, 131075, 1, 14, 262147, 1, -131061, 65539, 0, -65524, 131075, 1, -131060, 131075, 0, 13, 3, 0, -65521, 131075, 0, -65522, 3, 0, -65533, 65539, 0, -65534, 3, 0, 131076, 131075, 2, 65540, 131075, 1, 131075, 3, 2, 65539, 3, 1, 4, 131075, 1, -65532, 131075, 0, 12, 131075, 2, 11, 3, 2, -65525, 262147, 0, -131062, 3, 0, -65526, 3, 2)
+
+[node name="Pillar" type="Sprite2D" parent="Background"]
+position = Vector2(192, 480)
+texture = ExtResource("4_3tpno")
+offset = Vector2(0, -64)
+
+[node name="Pillar2" type="Sprite2D" parent="Background"]
+position = Vector2(1088, 192)
+texture = ExtResource("4_3tpno")
+offset = Vector2(0, -64)
+
+[node name="Web" type="Sprite2D" parent="Background"]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 1
+position = Vector2(803, 92)
+scale = Vector2(0.852123, 0.852123)
+texture = ExtResource("5_w76b5")
+flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="Background"]
+position = Vector2(576, 235)
+rotation_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background"]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.977546, 0.842183, 0.960847, 1)
+metadata/_edit_lock_ = true
+
+[node name="Chest2" parent="." instance=ExtResource("7_fanmo")]
+position = Vector2(780, 375)
+possible_items = Array[PackedScene]([ExtResource("8_ytiwu")])
+
+[node name="Chest" parent="." instance=ExtResource("7_fanmo")]
+position = Vector2(576, 207)
+possible_items = Array[PackedScene]([ExtResource("8_ytiwu"), ExtResource("9_7nogg"), ExtResource("10_ng5wy")])
+
+[node name="Chest3" parent="." instance=ExtResource("7_fanmo")]
+position = Vector2(405, 328)
+possible_items = Array[PackedScene]([ExtResource("9_7nogg")])

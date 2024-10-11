@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl551heh7mtm7"]
+
+[ext_resource type="Script" path="res://gotchas/input_picking/items/item_with_picking.gd" id="1_ug1ir"]
+[ext_resource type="Texture2D" uid="uid://baefyh76sju8g" path="res://gotchas/input_picking/items/key.png" id="2_v22do"]
+[ext_resource type="PackedScene" uid="uid://bdooawbxdlh2s" path="res://assets/sparks_particles.tscn" id="3_0wsg7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nj2t"]
+radius = 34.0147
+
+[node name="Key" type="Area2D" groups=["healing_item"]]
+collision_layer = 2
+script = ExtResource("1_ug1ir")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v22do")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2nj2t")
+
+[node name="Sparks" parent="." instance=ExtResource("3_0wsg7")]
