@@ -20,11 +20,10 @@ func set_squash_and_stretch(amount: float) -> void:
 
 	var scale_y: float = pow(1.0 + abs(amount), pow_factor)
 	var scale_x: float = pow(1.0 / (1.0 + abs(amount)), pow_factor)
-	if amount < 0.0:
-		var temp := scale_y
-		scale_y = scale_x
-		scale_x = temp
-	scale = Vector2(scale_x, scale_y)
+	if amount > 0.0:
+		scale = Vector2(scale_x, scale_y)
+	else:
+		scale = Vector2(scale_y, scale_x)
 
 
 func set_pow_factor(new_factor: float) -> void:

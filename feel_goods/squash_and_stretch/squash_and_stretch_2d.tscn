@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cownmnh0h55m6"]
+
+[ext_resource type="Script" path="res://feel_goods/squash_and_stretch/squash_and_stretch_2d.gd" id="1_c227l"]
+[ext_resource type="PackedScene" uid="uid://hjn4sr1lgmmx" path="res://impress_your_friends/runner/runner_visual_blue.tscn" id="2_8uspl"]
+
+[node name="SquashAndStretch" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_c227l")
+
+[node name="RunnerVisualBlue" parent="Node2D" instance=ExtResource("2_8uspl")]

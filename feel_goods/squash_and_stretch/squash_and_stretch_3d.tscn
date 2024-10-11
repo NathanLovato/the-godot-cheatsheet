@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx6lw7dcf5md6"]
+
+[ext_resource type="Script" path="res://feel_goods/squash_and_stretch/squash_and_stretch_3d.gd" id="1_5r8mw"]
+[ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://assets/skins/sophia/sophia_skin.tscn" id="2_dvbc1"]
+
+[node name="SquashAndStretch3d" type="Node3D"]
+
+[node name="SquashPivot" type="Node3D" parent="."]
+script = ExtResource("1_5r8mw")
+
+[node name="SophiaSkin" parent="SquashPivot" instance=ExtResource("2_dvbc1")]
