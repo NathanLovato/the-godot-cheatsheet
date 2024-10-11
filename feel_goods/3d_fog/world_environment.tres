@@ -1,0 +1,36 @@
+[gd_resource type="Environment" load_steps=6 format=3 uid="uid://5q6577gnpihq"]
+
+[ext_resource type="Shader" path="res://shared/shaders/sky.gdshader" id="1_kf2w3"]
+
+[sub_resource type="Curve" id="Curve_vfy0b"]
+_data = [Vector2(0.2, 0), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_moxc7"]
+curve = SubResource("Curve_vfy0b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6vx4"]
+shader = ExtResource("1_kf2w3")
+shader_parameter/top_color = Color(0.772549, 0.792157, 1, 1)
+shader_parameter/bottom_color = Color(0.603922, 0.560784, 1, 1)
+shader_parameter/gradient_curve = SubResource("CurveTexture_moxc7")
+
+[sub_resource type="Sky" id="Sky_0h0bb"]
+sky_material = SubResource("ShaderMaterial_r6vx4")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_0h0bb")
+ambient_light_source = 3
+ambient_light_color = Color(0.74902, 0.74902, 0.74902, 1)
+ambient_light_sky_contribution = 0.5
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+glow_normalized = true
+glow_strength = 0.25
+fog_enabled = true
+fog_light_color = Color(0.603922, 0.560784, 1, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_height_density = 0.15

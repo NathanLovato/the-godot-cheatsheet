@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b38vahcwqubi0"]
+
+[ext_resource type="Texture2D" uid="uid://brbtohct73mlt" path="res://shared/checkboard.png" id="1_q8jg8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31dii"]
+albedo_color = Color(0.45, 0.4575, 0.9, 1)
+albedo_texture = ExtResource("1_q8jg8")
+roughness = 0.85
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 10.0
+
+[node name="PlatformTiny" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, 0)
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+size = Vector3(2, 21, 2)

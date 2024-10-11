@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://chlf6nn4qt7ta"]
+
+[ext_resource type="Texture2D" uid="uid://brbtohct73mlt" path="res://shared/checkboard.png" id="1_mjef6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31dii"]
+albedo_color = Color(0.45, 0.4575, 0.9, 1)
+albedo_texture = ExtResource("1_mjef6")
+roughness = 0.85
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 10.0
+
+[node name="PlatformGoal" type="CSGCombiner3D"]
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.5, 12)
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+size = Vector3(8, 23, 8)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.5, 4)
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+size = Vector3(4, 21, 8)
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 5)
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+polygon = PackedVector2Array(0, 0, 3, 2, 3, 0)
+depth = 4.0

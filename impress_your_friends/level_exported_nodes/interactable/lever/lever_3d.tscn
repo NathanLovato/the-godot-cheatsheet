@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3122fl2rw71t"]
+
+[ext_resource type="PackedScene" uid="uid://c518s53sg0w1x" path="res://impress_your_friends/level_exported_nodes/interactable/lever/lever.glb" id="1_oijaq"]
+[ext_resource type="Script" path="res://impress_your_friends/level_exported_nodes/interactable/lever/lever_3d.gd" id="2_nfxgk"]
+[ext_resource type="Material" uid="uid://bpr3r6smcmxwr" path="res://shared/materials/secondary_color.tres" id="3_s4lah"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py33u"]
+resource_local_to_scene = true
+albedo_color = Color(0.964706, 0.65098, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e6775"]
+radius = 1.8
+
+[node name="Lever3D" instance=ExtResource("1_oijaq")]
+script = ExtResource("2_nfxgk")
+color_inactive = Color(0.964706, 0.65098, 1, 1)
+color_active = Color(1, 0.796078, 0.180392, 1)
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="." index="0"]
+unique_name_in_owner = true
+pitch_scale = 1.00749
+
+[node name="LeverBody" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0.1, 0)
+lod_bias = 10.0
+surface_material_override/0 = ExtResource("3_s4lah")
+
+[node name="LeverHandle" parent="." index="2"]
+unique_name_in_owner = true
+transform = Transform3D(1, -1.73205, 0, 1.73205, 1, 0, 0, 0, 2, 0, 0.1, 0)
+lod_bias = 10.0
+surface_material_override/0 = ExtResource("3_s4lah")
+surface_material_override/1 = SubResource("StandardMaterial3D_py33u")
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0812378, 0, 0)
+shape = SubResource("SphereShape3D_e6775")

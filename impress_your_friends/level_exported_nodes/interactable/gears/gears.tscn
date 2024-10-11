@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmagoudcj3wrp"]
+
+[ext_resource type="Material" uid="uid://bpr3r6smcmxwr" path="res://shared/materials/secondary_color.tres" id="2_3ig0g"]
+[ext_resource type="Script" path="res://impress_your_friends/level_exported_nodes/interactable/gears/gears.gd" id="2_kmcl4"]
+[ext_resource type="ArrayMesh" uid="uid://cxds2oh3hx53n" path="res://shared/mesh/gear.obj" id="4_euu4c"]
+[ext_resource type="ArrayMesh" uid="uid://cb5fpdbqyuv2" path="res://shared/mesh/small_gear.obj" id="5_utpu0"]
+
+[node name="Gears" type="Node3D"]
+script = ExtResource("2_kmcl4")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+volume_db = -80.0
+max_distance = 30.0
+
+[node name="BigGear" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 0, 0, 0)
+material_override = ExtResource("2_3ig0g")
+mesh = ExtResource("4_euu4c")
+
+[node name="Empty" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45467, 0, 0)
+
+[node name="SmallGear" type="MeshInstance3D" parent="Empty"]
+unique_name_in_owner = true
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 0, 0, 0)
+material_override = ExtResource("2_3ig0g")
+mesh = ExtResource("5_utpu0")

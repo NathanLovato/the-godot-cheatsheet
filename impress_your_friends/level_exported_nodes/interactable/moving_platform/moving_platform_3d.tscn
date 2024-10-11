@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7uelyqccwh6p"]
+
+[ext_resource type="Script" path="res://impress_your_friends/level_exported_nodes/interactable/moving_platform/moving_platform_3d.gd" id="1_nx6q7"]
+[ext_resource type="Texture2D" uid="uid://brbtohct73mlt" path="res://shared/checkboard.png" id="2_yasi8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc2j2"]
+albedo_color = Color(1, 0.796078, 0.180392, 1)
+albedo_texture = ExtResource("2_yasi8")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 10.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dns2s"]
+size = Vector3(4, 0.4, 3)
+
+[node name="MovingPlatform3D" type="Node3D"]
+script = ExtResource("1_nx6q7")
+color_active = Color(1, 0.796078, 0.180392, 1)
+color_inactive = Color(0.964706, 0.65098, 1, 1)
+platform_material = SubResource("StandardMaterial3D_fc2j2")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("BoxShape3D_dns2s")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+size = Vector3(4, 0.4, 3)
+material = SubResource("StandardMaterial3D_fc2j2")

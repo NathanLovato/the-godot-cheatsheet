@@ -1,0 +1,123 @@
+[gd_scene load_steps=19 format=3 uid="uid://bvt4747kc5u2t"]
+
+[ext_resource type="Shader" path="res://shared/shaders/sky.gdshader" id="2_rdne3"]
+[ext_resource type="PackedScene" uid="uid://6c068ac25bsc" path="res://impress_your_friends/level_exported_nodes/vfx/flying_sparkles.tscn" id="3_a8a14"]
+[ext_resource type="Material" uid="uid://bpr3r6smcmxwr" path="res://shared/materials/secondary_color.tres" id="7_277na"]
+[ext_resource type="ArrayMesh" uid="uid://daevc55retrxe" path="res://shared/mesh/pipe.obj" id="8_dqtxg"]
+[ext_resource type="PackedScene" uid="uid://b38vahcwqubi0" path="res://impress_your_friends/level_exported_nodes/platforms/platform_tiny.tscn" id="9_8dcic"]
+[ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://impress_your_friends/level_exported_nodes/interactable/flag/flag_3d.tscn" id="10_10tyc"]
+[ext_resource type="ArrayMesh" uid="uid://brtmtc2oqcouc" path="res://shared/mesh/pipe_l.obj" id="11_t5oga"]
+[ext_resource type="PackedScene" uid="uid://chlf6nn4qt7ta" path="res://impress_your_friends/level_exported_nodes/platforms/platform_goal.tscn" id="12_wyjro"]
+[ext_resource type="Texture2D" uid="uid://brbtohct73mlt" path="res://shared/checkboard.png" id="14_jw1ng"]
+[ext_resource type="PackedScene" uid="uid://b3122fl2rw71t" path="res://impress_your_friends/level_exported_nodes/interactable/lever/lever_3d.tscn" id="15_4dsm1"]
+[ext_resource type="PackedScene" uid="uid://c7uelyqccwh6p" path="res://impress_your_friends/level_exported_nodes/interactable/moving_platform/moving_platform_3d.tscn" id="16_xnrso"]
+[ext_resource type="PackedScene" uid="uid://bmagoudcj3wrp" path="res://impress_your_friends/level_exported_nodes/interactable/gears/gears.tscn" id="17_svpyk"]
+
+[sub_resource type="Curve" id="Curve_vfy0b"]
+_data = [Vector2(0.2, 0), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_moxc7"]
+curve = SubResource("Curve_vfy0b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6vx4"]
+shader = ExtResource("2_rdne3")
+shader_parameter/top_color = Color(0.772549, 0.792157, 1, 1)
+shader_parameter/bottom_color = Color(0.603922, 0.560784, 1, 1)
+shader_parameter/gradient_curve = SubResource("CurveTexture_moxc7")
+
+[sub_resource type="Sky" id="Sky_0h0bb"]
+sky_material = SubResource("ShaderMaterial_r6vx4")
+
+[sub_resource type="Environment" id="Environment_mm38n"]
+background_mode = 2
+sky = SubResource("Sky_0h0bb")
+ambient_light_source = 3
+ambient_light_color = Color(0.74902, 0.74902, 0.74902, 1)
+ambient_light_sky_contribution = 0.5
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+glow_normalized = true
+glow_strength = 0.25
+fog_enabled = true
+fog_light_color = Color(0.603922, 0.560784, 1, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_height_density = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31dii"]
+albedo_color = Color(0.45, 0.4575, 0.9, 1)
+albedo_texture = ExtResource("14_jw1ng")
+roughness = 0.85
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 10.0
+
+[node name="Game" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mm38n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.226294, 0.780723, -0.582463, 0, 0.597975, 0.801515, 0.974059, -0.181378, 0.135318, -2.03371, 9.96039, -10.0545)
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="FlyingSparkles" parent="." instance=ExtResource("3_a8a14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+visibility_aabb = AABB(-20, -5, -20, 40, 10, 40)
+
+[node name="Pipe3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.41421, 1.4924e-07, -1.41421, 1.41421, -6.18172e-08, -1.41421, -1.4924e-07, -2, -6.18172e-08, 1, -1, -12)
+material_override = ExtResource("7_277na")
+mesh = ExtResource("8_dqtxg")
+
+[node name="PlatformTiny" parent="." instance=ExtResource("9_8dcic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -7.5, 2)
+
+[node name="Flag3D" parent="." instance=ExtResource("10_10tyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6, 22)
+
+[node name="Pipe2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 0, 2, -1, 0, 11)
+material_override = ExtResource("7_277na")
+mesh = ExtResource("11_t5oga")
+
+[node name="PlatformGoal" parent="." instance=ExtResource("12_wyjro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 9)
+
+[node name="StartPlatform" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StartPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -5.5, -9.5)
+material_override = SubResource("StandardMaterial3D_31dii")
+use_collision = true
+size = Vector3(4, 19, 5)
+
+[node name="Lever3D" parent="." instance=ExtResource("15_4dsm1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 2)
+
+[node name="MovingPlatform3D" parent="." node_paths=PackedStringArray("linked_lever", "end_marker") instance=ExtResource("16_xnrso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, -5.5)
+linked_lever = NodePath("../Lever3D")
+end_marker = NodePath("../PlatformTarget")
+
+[node name="PlatformTarget" type="Marker3D" parent="."]
+editor_description = "NOTE: In Godot 4.2 top-level doesn't work as intended, the node gets offset at runtime as if it wasn't top-level. So, it can't be parented to the platform."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4, 7.5)
+top_level = true
+
+[node name="Gears" parent="." node_paths=PackedStringArray("linked_lever") instance=ExtResource("17_svpyk")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9, 1, 2)
+linked_lever = NodePath("../Lever3D")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+autoplay = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.707107, 0.290838, -0.644525, 1.49012e-08, 0.911497, 0.411308, 0.707107, 0.290838, -0.644526, -12.2655, 15.6112, -14.4923)
+fov = 45.0

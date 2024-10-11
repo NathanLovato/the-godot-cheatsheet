@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cg2ujwpv73ha0"]
+
+[ext_resource type="Shader" path="res://impress_your_friends/level_exported_nodes/interactable/flag/goal_flag.gdshader" id="1_vq0dt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vq0dt")
+shader_parameter/albedo_color = Color(1, 0.435294, 0.0784314, 1)
