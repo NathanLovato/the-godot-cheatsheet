@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds0lg330fnrp6"]
+
+[ext_resource type="Script" path="res://fps_boosters/sweeping_raycast/bat_mob.gd" id="1_h8uq7"]
+[ext_resource type="PackedScene" uid="uid://tyjgdu65yj3m" path="res://fps_boosters/sweeping_raycast/round_bat/round_bat_skin.tscn" id="1_p8bkp"]
+[ext_resource type="Script" path="res://fps_boosters/sweeping_raycast/raycast_sweeping_3d.gd" id="2_es8qf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cl616"]
+radius = 0.415277
+
+[node name="BatMob" type="RigidBody3D"]
+script = ExtResource("1_h8uq7")
+
+[node name="RoundBatSkin" parent="." instance=ExtResource("1_p8bkp")]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_cl616")
+
+[node name="SweepingRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(-0.664771, 0.914961, 4.87041)
+script = ExtResource("2_es8qf")
+sweep_angle = 0.228167
